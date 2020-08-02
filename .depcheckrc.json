@@ -1,9 +1,14 @@
 {
   "ignores": [
     "@babel/*",
-    "@pwn/is",
-    "@virtualpatterns/mablung-*",
-    "babel-*",
-    "eslint-*"
+    "@virtualpatterns/mablung-source-map-support"
+  ],
+  "parsers": {
+    "*.cjs": [ "es6" ],
+    "*.js": [ "es6" ]
+  },
+  "specials": [
+    "bin",
+    "eslint"
   ]
 }

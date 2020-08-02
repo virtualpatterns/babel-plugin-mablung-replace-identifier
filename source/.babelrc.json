@@ -16,7 +16,7 @@
       ],
       "sourceType": "module"
     },
-    "esmodules": {
+    "esmodule": {
       "plugins": [ 
         "@babel/plugin-proposal-export-default-from" 
       ],

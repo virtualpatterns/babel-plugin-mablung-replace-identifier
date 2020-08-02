@@ -10,7 +10,7 @@
       "--unhandled-rejections=strict"
     ],
     "require": [
-      "@virtualpatterns/mablung-source-map-support/install.js"
+      "@virtualpatterns/mablung-source-map-support/install"
     ],
     "verbose": true
   },
@@ -46,8 +46,8 @@
     "lint:10": "eslint --ignore-path .gitignore source",
     "lint:20": "depcheck",
     "lint": "run-s lint:*",
-    "build:10": "cross-env NODE_ENV=commonjs  babel source --copy-files --extensions .cjs --keep-file-extension --out-dir distributable --source-maps",
-    "build:20": "cross-env NODE_ENV=esmodules babel source              --extensions .js  --keep-file-extension --out-dir distributable --source-maps",
+    "build:10": "cross-env NODE_ENV=commonjs babel source --copy-files --extensions .cjs --keep-file-extension --out-dir distributable --source-maps",
+    "build:20": "cross-env NODE_ENV=esmodule babel source              --extensions .js  --keep-file-extension --out-dir distributable --source-maps",
     "build": "run-s clean lint build:*",
     "test:10": "c8 ava",
     "test": "run-s build \"test:10 {@}\" --",
