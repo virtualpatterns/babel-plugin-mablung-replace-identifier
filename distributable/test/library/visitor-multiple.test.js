@@ -16,7 +16,7 @@ Test.beforeEach(test => {
       'rule': [
       {
         'searchFor': '__filePath',
-        'replaceWith': '__importIdentifier.fileURLToPath(import.meta.url)',
+        'replaceWith': '__importIdentifier_0.fileURLToPath(import.meta.url)',
         'parserOption': {
           'plugins': ['importMeta'],
           'sourceType': 'module' },
@@ -33,7 +33,7 @@ Test.beforeEach(test => {
 
       {
         'searchFor': '__require',
-        'replaceWith': '__importIdentifier(import.meta.url)',
+        'replaceWith': '__importIdentifier_0(import.meta.url)',
         'parserOption': {
           'plugins': ['importMeta'],
           'sourceType': 'module' },
@@ -54,11 +54,12 @@ Test.beforeEach(test => {
 
 });
 
-Test('rule.replaceWith = \'__importIdentifier.fileURLToPath(import.meta.url)\' and \'__importIdentifier(import.meta.url)\'', async test => {
+Test('rule.replaceWith = \'__importIdentifier_0.fileURLToPath(import.meta.url)\' and \'__importIdentifier_0(import.meta.url)\'', async test => {
 
   let { code: actualCodeOut } = await Babel.transformAsync(test.context.codeIn, test.context.option);
   let expectedCodeOut = 'import { createRequire as _createRequire } from "module";\nimport _URL from "url";\n\nconst FilePath = _URL.fileURLToPath(import.meta.url);\n\nconst Require = _createRequire(import.meta.url);';
 
+  // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut);
 
 });
