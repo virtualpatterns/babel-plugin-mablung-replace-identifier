@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>92/92</span>
+                <span class='fraction'>97/97</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">72.73% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>21/30</span>
+                <span class='fraction'>24/33</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>92/92</span>
+                <span class='fraction'>97/97</span>
             </div>
         
             
@@ -149,7 +149,12 @@
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -222,6 +227,11 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -256,7 +266,7 @@ class Visitor extends BaseVisitor {
     super(babel)
 &nbsp;
     this._programPath = null
-    this._importIdentifier = null
+    this._importIdentifier = []
 &nbsp;
   }
 &nbsp;
@@ -268,7 +278,7 @@ class Visitor extends BaseVisitor {
     // console.log(`Visitor.onProgramNode('${path.node.name}')`)
 &nbsp;
     this._programPath = path
-    this._importIdentifier = null
+    this._importIdentifier = []
 &nbsp;
   }
 &nbsp;
@@ -291,20 +301,20 @@ class Visitor extends BaseVisitor {
         //   console.dir(rule.parserOption)
         // }
 &nbsp;
-        if(Is.null(this._importIdentifier)) {
+        if(this._importIdentifier.length &lt;= 0) {
 &nbsp;
           rule.addImport = <span class="branch-0 cbranch-no" title="branch not covered" >rule.addImport ? rule.addImport : []</span>
           rule.addImport.forEach((addImport) =&gt; {
 &nbsp;
             switch (addImport.type) {
               case 'default':
-                this._importIdentifier = AddDefaultImport(this._programPath, addImport.source, addImport.option)
+                this._importIdentifier.push(AddDefaultImport(this._programPath, addImport.source, addImport.option))
                 break
               case 'named':
-                this._importIdentifier = AddNamedImport(this._programPath, addImport.name, addImport.source, addImport.option)
+                this._importIdentifier.push(AddNamedImport(this._programPath, addImport.name, addImport.source, addImport.option))
                 break
               case 'namespace':
-                this._importIdentifier = AddNamespaceImport(this._programPath, addImport.source, addImport.option)
+                this._importIdentifier.push(AddNamespaceImport(this._programPath, addImport.source, addImport.option))
                 break
               case 'sideEffect':
                 AddSideEffectImport(this._programPath, addImport.source)
@@ -315,10 +325,15 @@ class Visitor extends BaseVisitor {
             
           })
 &nbsp;
-          rule.replaceWith = Is.null(this._importIdentifier) ? rule.replaceWith : rule.replaceWith.replace(/__importIdentifier/gi, this._importIdentifier.name)
+          // this supports indexed __importIdentifier (.e.g. __importIdentifier_5)
+          rule.replaceWith = this._importIdentifier.length &lt;= 0 ? rule.replaceWith : this._importIdentifier.reduce((replaceWith, importIdentifier, index) =&gt; replaceWith = replaceWith.replace(new RegExp(`__importIdentifier_${index}`, 'gi'), importIdentifier.name), rule.replaceWith)
+          
+          // this supports non-indexed __importIdentifier, as was supported only initially
+          rule.replaceWith = this._importIdentifier.length &lt;= 0 ? rule.replaceWith : rule.replaceWith.replace(new RegExp('__importIdentifier', 'gi'), this._importIdentifier[this._importIdentifier.length - 1].name)
+          
           rule.replaceWithNode = <span class="branch-0 cbranch-no" title="branch not covered" >rule.replaceWithNode ?  rule.replaceWithNode : P</span>arser.parseExpression(rule.replaceWith, rule.parserOption)
   
-          this._importIdentifier = null
+          this._importIdentifier = []
 &nbsp;
         }
 &nbsp;
@@ -340,7 +355,7 @@ export { Visitor }<span class="fstat-no" title="function not covered" ><span cla
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Aug 01 2020 23:14:38 GMT-0400 (Eastern Daylight Time)
+                at Fri Aug 07 2020 00:41:06 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

@@ -27,7 +27,7 @@ class Visitor extends _visitor.Visitor {
   constructor(babel) {
     super(babel);
     this._programPath = null;
-    this._importIdentifier = null;
+    this._importIdentifier = [];
   }
 
   get nodeType() {
@@ -37,7 +37,7 @@ class Visitor extends _visitor.Visitor {
   onProgramNode(path) {
     // console.log(`Visitor.onProgramNode('${path.node.name}')`)
     this._programPath = path;
-    this._importIdentifier = null;
+    this._importIdentifier = [];
   }
 
   onIdentifierNode(path, state) {
@@ -53,20 +53,23 @@ class Visitor extends _visitor.Visitor {
         // if (rule.parserOption) {
         //   console.dir(rule.parserOption)
         // }
-        if (_is.default.null(this._importIdentifier)) {
+        if (this._importIdentifier.length <= 0) {
           rule.addImport = rule.addImport ? rule.addImport : [];
           rule.addImport.forEach(addImport => {
             switch (addImport.type) {
               case 'default':
-                this._importIdentifier = (0, _helperModuleImports.addDefault)(this._programPath, addImport.source, addImport.option);
+                this._importIdentifier.push((0, _helperModuleImports.addDefault)(this._programPath, addImport.source, addImport.option));
+
                 break;
 
               case 'named':
-                this._importIdentifier = (0, _helperModuleImports.addNamed)(this._programPath, addImport.name, addImport.source, addImport.option);
+                this._importIdentifier.push((0, _helperModuleImports.addNamed)(this._programPath, addImport.name, addImport.source, addImport.option));
+
                 break;
 
               case 'namespace':
-                this._importIdentifier = (0, _helperModuleImports.addNamespace)(this._programPath, addImport.source, addImport.option);
+                this._importIdentifier.push((0, _helperModuleImports.addNamespace)(this._programPath, addImport.source, addImport.option));
+
                 break;
 
               case 'sideEffect':
@@ -76,10 +79,13 @@ class Visitor extends _visitor.Visitor {
               default:
                 throw new _invalidImportTypeReplaceIdentifierError.InvalidImportTypeReplaceIdentifierError(addImport.type);
             }
-          });
-          rule.replaceWith = _is.default.null(this._importIdentifier) ? rule.replaceWith : rule.replaceWith.replace(/__importIdentifier/gi, this._importIdentifier.name);
+          }); // this supports indexed __importIdentifier (.e.g. __importIdentifier_5)
+
+          rule.replaceWith = this._importIdentifier.length <= 0 ? rule.replaceWith : this._importIdentifier.reduce((replaceWith, importIdentifier, index) => replaceWith = replaceWith.replace(new RegExp(`__importIdentifier_${index}`, 'gi'), importIdentifier.name), rule.replaceWith); // this supports non-indexed __importIdentifier, as was supported only initially
+
+          rule.replaceWith = this._importIdentifier.length <= 0 ? rule.replaceWith : rule.replaceWith.replace(new RegExp('__importIdentifier', 'gi'), this._importIdentifier[this._importIdentifier.length - 1].name);
           rule.replaceWithNode = rule.replaceWithNode ? rule.replaceWithNode : Parser.parseExpression(rule.replaceWith, rule.parserOption);
-          this._importIdentifier = null;
+          this._importIdentifier = [];
         }
 
         path.replaceWith(rule.replaceWithNode);
