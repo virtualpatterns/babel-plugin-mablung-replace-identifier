@@ -13,7 +13,7 @@ class Visitor extends BaseVisitor {
     super(babel)
 
     this._programPath = null
-    this._importIdentifier = null
+    this._importIdentifier = []
 
   }
 
@@ -25,7 +25,7 @@ class Visitor extends BaseVisitor {
     // console.log(`Visitor.onProgramNode('${path.node.name}')`)
 
     this._programPath = path
-    this._importIdentifier = null
+    this._importIdentifier = []
 
   }
 
@@ -48,20 +48,20 @@ class Visitor extends BaseVisitor {
         //   console.dir(rule.parserOption)
         // }
 
-        if(Is.null(this._importIdentifier)) {
+        if(this._importIdentifier.length <= 0) {
 
           rule.addImport = rule.addImport ? rule.addImport : []
           rule.addImport.forEach((addImport) => {
 
             switch (addImport.type) {
               case 'default':
-                this._importIdentifier = AddDefaultImport(this._programPath, addImport.source, addImport.option)
+                this._importIdentifier.push(AddDefaultImport(this._programPath, addImport.source, addImport.option))
                 break
               case 'named':
-                this._importIdentifier = AddNamedImport(this._programPath, addImport.name, addImport.source, addImport.option)
+                this._importIdentifier.push(AddNamedImport(this._programPath, addImport.name, addImport.source, addImport.option))
                 break
               case 'namespace':
-                this._importIdentifier = AddNamespaceImport(this._programPath, addImport.source, addImport.option)
+                this._importIdentifier.push(AddNamespaceImport(this._programPath, addImport.source, addImport.option))
                 break
               case 'sideEffect':
                 AddSideEffectImport(this._programPath, addImport.source)
@@ -72,10 +72,15 @@ class Visitor extends BaseVisitor {
             
           })
 
-          rule.replaceWith = Is.null(this._importIdentifier) ? rule.replaceWith : rule.replaceWith.replace(/__importIdentifier/gi, this._importIdentifier.name)
+          // this supports indexed __importIdentifier (.e.g. __importIdentifier_5)
+          rule.replaceWith = this._importIdentifier.length <= 0 ? rule.replaceWith : this._importIdentifier.reduce((replaceWith, importIdentifier, index) => replaceWith = replaceWith.replace(new RegExp(`__importIdentifier_${index}`, 'gi'), importIdentifier.name), rule.replaceWith)
+          
+          // this supports non-indexed __importIdentifier, as was supported only initially
+          rule.replaceWith = this._importIdentifier.length <= 0 ? rule.replaceWith : rule.replaceWith.replace(new RegExp('__importIdentifier', 'gi'), this._importIdentifier[this._importIdentifier.length - 1].name)
+          
           rule.replaceWithNode = rule.replaceWithNode ?  rule.replaceWithNode : Parser.parseExpression(rule.replaceWith, rule.parserOption)
   
-          this._importIdentifier = null
+          this._importIdentifier = []
 
         }
 
