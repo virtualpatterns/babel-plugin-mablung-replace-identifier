@@ -1,11 +1,10 @@
 import { createRequire as CreateRequire } from 'module';
-import DefaultBabel, * as ModuleBabel from '@babel/core';
+import Babel from '@babel/core';
 import Test from 'ava';
 
 import ModuleInvalidImportTypeReplaceIdentifierError from '../../library/error/invalid-import-type-replace-identifier-error.cjs';
 
 const { InvalidImportTypeReplaceIdentifierError } = ModuleInvalidImportTypeReplaceIdentifierError;
-const Babel = DefaultBabel || ModuleBabel;
 const Require = CreateRequire(import.meta.url);
 
 Test.beforeEach(test => {

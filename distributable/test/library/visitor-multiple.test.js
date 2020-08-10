@@ -1,8 +1,7 @@
 import { createRequire as CreateRequire } from 'module';
-import DefaultBabel, * as ModuleBabel from '@babel/core';
+import Babel from '@babel/core';
 import Test from 'ava';
 
-const Babel = DefaultBabel || ModuleBabel;
 const Require = CreateRequire(import.meta.url);
 
 Test.beforeEach(test => {
