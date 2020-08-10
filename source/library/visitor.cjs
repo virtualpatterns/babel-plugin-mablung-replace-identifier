@@ -1,11 +1,9 @@
 import { addDefault as AddDefaultImport, addNamed as AddNamedImport, addNamespace as AddNamespaceImport, addSideEffect as AddSideEffectImport } from '@babel/helper-module-imports'
 import Is from '@pwn/is'
-import DefaultParser, * as ModuleParser from '@babel/parser'
+import * as Parser from '@babel/parser'
 import { Visitor as BaseVisitor } from '@virtualpatterns/mablung-babel-plugin/visitor'
 
 import { InvalidImportTypeReplaceIdentifierError } from './error/invalid-import-type-replace-identifier-error.cjs'
-
-const Parser = DefaultParser || ModuleParser
 
 class Visitor extends BaseVisitor {
 
