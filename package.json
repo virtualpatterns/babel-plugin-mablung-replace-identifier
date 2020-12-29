@@ -28,8 +28,7 @@
   },
   "description": "TBD",
   "exports": {
-    ".": "./release/index.cjs",
-    "./package.json": "./package.json"
+    ".": "./release/index.cjs"
   },
   "license": "GPL-3.0+",
   "main": "release/index.cjs",
