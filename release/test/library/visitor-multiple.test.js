@@ -4,7 +4,7 @@ import Test from 'ava';
 
 const Require = CreateRequire(import.meta.url);
 
-Test.beforeEach(test => {
+Test.beforeEach((test) => {
 
   test.context.codeIn = 'const FilePath = __filePath\nconst Require = __require';
   test.context.option = {
@@ -53,7 +53,7 @@ Test.beforeEach(test => {
 
 });
 
-Test('rule.replaceWith = \'__importIdentifier_0.fileURLToPath(import.meta.url)\' and \'__importIdentifier_0(import.meta.url)\'', async test => {
+Test('rule.replaceWith = \'__importIdentifier_0.fileURLToPath(import.meta.url)\' and \'__importIdentifier_0(import.meta.url)\'', async (test) => {
 
   let { code: actualCodeOut } = await Babel.transformAsync(test.context.codeIn, test.context.option);
   let expectedCodeOut = 'import { createRequire as _createRequire } from "module";\nimport _URL from "url";\n\nconst FilePath = _URL.fileURLToPath(import.meta.url);\n\nconst Require = _createRequire(import.meta.url);';
@@ -62,4 +62,5 @@ Test('rule.replaceWith = \'__importIdentifier_0.fileURLToPath(import.meta.url)\'
   test.is(actualCodeOut, expectedCodeOut);
 
 });
+
 //# sourceMappingURL=visitor-multiple.test.js.map

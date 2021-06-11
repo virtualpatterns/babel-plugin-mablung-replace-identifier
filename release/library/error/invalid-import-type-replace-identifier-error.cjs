@@ -15,4 +15,5 @@ class InvalidImportTypeReplaceIdentifierError extends _replaceIdentifierError.Re
 }
 
 exports.InvalidImportTypeReplaceIdentifierError = InvalidImportTypeReplaceIdentifierError;
+
 //# sourceMappingURL=invalid-import-type-replace-identifier-error.cjs.map

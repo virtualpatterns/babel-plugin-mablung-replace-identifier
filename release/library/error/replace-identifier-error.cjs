@@ -15,4 +15,5 @@ class ReplaceIdentifierError extends _visitorError.VisitorError {
 }
 
 exports.ReplaceIdentifierError = ReplaceIdentifierError;
+
 //# sourceMappingURL=replace-identifier-error.cjs.map

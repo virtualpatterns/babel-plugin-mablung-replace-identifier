@@ -10,11 +10,18 @@
   "globals": {},
   "parser": "@babel/eslint-parser",
   "parserOptions": {
+    "babelOptions": {
+      "parserOpts": {
+        "plugins": [
+          "exportDefaultFrom"
+        ]
+      }
+    },
     "requireConfigFile": true,
     "sourceType": "module"
   },
   "plugins": [
-    "babel"
+    "eslint-plugin-babel"
   ],
   "rules": {
     "arrow-parens": "error",

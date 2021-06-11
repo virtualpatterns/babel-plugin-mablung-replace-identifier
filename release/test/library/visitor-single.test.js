@@ -7,7 +7,7 @@ import ModuleInvalidImportTypeReplaceIdentifierError from '../../library/error/i
 const { InvalidImportTypeReplaceIdentifierError } = ModuleInvalidImportTypeReplaceIdentifierError;
 const Require = CreateRequire(import.meta.url);
 
-Test.beforeEach(test => {
+Test.beforeEach((test) => {
 
   test.context.codeIn = 'console.log(__require.resolve(\'./index.js\'))';
   test.context.option = {
@@ -33,7 +33,7 @@ Test.beforeEach(test => {
 
 });
 
-Test('rule.replaceWith = \'createRequire(import.meta.url)\'', async test => {
+Test('rule.replaceWith = \'createRequire(import.meta.url)\'', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = 'createRequire(import.meta.url)';
 
@@ -44,7 +44,7 @@ Test('rule.replaceWith = \'createRequire(import.meta.url)\'', async test => {
 
 });
 
-Test('addImport.type: \'default\' using non-index', async test => {
+Test('addImport.type: \'default\' using non-index', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier(import.meta.url)';
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -62,7 +62,7 @@ Test('addImport.type: \'default\' using non-index', async test => {
 
 });
 
-Test('addImport.type: \'default\'', async test => {
+Test('addImport.type: \'default\'', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_0(import.meta.url)';
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -80,7 +80,7 @@ Test('addImport.type: \'default\'', async test => {
 
 });
 
-Test('addImport.type: \'default\' using __importIdentifier_0', async test => {
+Test('addImport.type: \'default\' using __importIdentifier_0', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_0(import.meta.url)';
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -106,7 +106,7 @@ Test('addImport.type: \'default\' using __importIdentifier_0', async test => {
 
 });
 
-Test('addImport.type: \'default\' using __importIdentifier_1', async test => {
+Test('addImport.type: \'default\' using __importIdentifier_1', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_1(import.meta.url)';
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -132,7 +132,7 @@ Test('addImport.type: \'default\' using __importIdentifier_1', async test => {
 
 });
 
-Test('addImport.type: \'named\'', async test => {
+Test('addImport.type: \'named\'', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_0(import.meta.url)';
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -148,7 +148,7 @@ Test('addImport.type: \'named\'', async test => {
 
 });
 
-Test('addImport.type: \'namespace\'', async test => {
+Test('addImport.type: \'namespace\'', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_0(import.meta.url)';
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -166,7 +166,7 @@ Test('addImport.type: \'namespace\'', async test => {
 
 });
 
-Test('addImport.type: \'sideEffect\'', async test => {
+Test('addImport.type: \'sideEffect\'', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_0(import.meta.url)';
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -181,7 +181,7 @@ Test('addImport.type: \'sideEffect\'', async test => {
 
 });
 
-Test('addImport.type: invalid', async test => {
+Test('addImport.type: invalid', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_0(import.meta.url)';
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -194,4 +194,5 @@ Test('addImport.type: invalid', async test => {
   await test.throwsAsync(promise, { 'instanceOf': InvalidImportTypeReplaceIdentifierError });
 
 });
+
 //# sourceMappingURL=visitor-single.test.js.map
