@@ -1,9 +1,13 @@
 
-ifeq ($(origin projectPath),undefined)
-export projectPath := $(CURDIR)
+ifeq ($(origin project-path),undefined)
+export project-path := $(CURDIR)
 endif
 
-include $(projectPath)/node_modules/@virtualpatterns/mablung-makefile/makefile
+ifeq ($(origin mablung-makefile-path),undefined)
+export mablung-makefile-path := $(shell npx mablung-makefile-path)
+endif
 
-$(currentReleasePath)/%.cjs: babelFlag += --env-name commonjs --keep-file-extension
-$(currentReleasePath)/%.js: babelFlag += --env-name esmodule --keep-file-extension
+include $(mablung-makefile-path)
+
+$(project-path)/release/%.cjs: babel-flag += --env-name commonjs --keep-file-extension
+$(project-path)/release/%.js: babel-flag += --env-name esmodule --keep-file-extension
