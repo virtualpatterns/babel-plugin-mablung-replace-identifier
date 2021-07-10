@@ -13,16 +13,13 @@
             } 
           }
         ]
-      ],
-      "sourceType": "module"
+      ]
     },
     "esmodule": {
       "plugins": [ 
         "@babel/plugin-proposal-export-default-from" 
       ],
-      "presets": [],
-      "retainLines": true,
-      "sourceType": "module"
+      "presets": []
     }
   }
 }
