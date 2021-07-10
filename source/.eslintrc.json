@@ -16,9 +16,7 @@
           "exportDefaultFrom"
         ]
       }
-    },
-    "requireConfigFile": true,
-    "sourceType": "module"
+    }
   },
   "plugins": [
     "eslint-plugin-babel"
