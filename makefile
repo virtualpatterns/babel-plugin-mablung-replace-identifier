@@ -1,9 +1,9 @@
 
-ifeq ($(origin mablung-makefile-path),undefined)
+ifndef mablung-makefile-path
 export mablung-makefile-path := $(shell npx mablung-makefile get-path)
 endif
 
 include $(mablung-makefile-path)
 
-$(project-path)/release/%.cjs: babel-parameter += --env-name commonjs
-$(project-path)/release/%.js: babel-parameter += --env-name esmodule
+release/%.cjs: babel-parameter += --env-name commonjs
+release/%.js: babel-parameter += --env-name esmodule
