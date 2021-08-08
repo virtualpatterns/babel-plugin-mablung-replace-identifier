@@ -31,6 +31,7 @@
   "c8": {
     "all": true,
     "exclude": [
+      "release/header",
       "release/sandbox"
     ],
     "reporter": [
