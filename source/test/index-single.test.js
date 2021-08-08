@@ -2,9 +2,8 @@ import { createRequire as CreateRequire } from 'module'
 import Babel from '@babel/core'
 import Test from 'ava'
 
-import ModuleInvalidImportTypeReplaceIdentifierError from '../../library/error/invalid-import-type-replace-identifier-error.cjs'
+import { InvalidImportTypeError } from '../error/invalid-import-type-error.cjs'
 
-const { InvalidImportTypeReplaceIdentifierError } = ModuleInvalidImportTypeReplaceIdentifierError
 const Require = CreateRequire(import.meta.url)
 
 Test.beforeEach((test) => {
@@ -191,7 +190,6 @@ Test('addImport.type: invalid', async (test) => {
 
   let promise = Babel.transformAsync(test.context.codeIn, test.context.option)
 
-  await test.throwsAsync(promise, { 'instanceOf': InvalidImportTypeReplaceIdentifierError })
+  await test.throwsAsync(promise, { 'instanceOf': InvalidImportTypeError })
 
 })
-

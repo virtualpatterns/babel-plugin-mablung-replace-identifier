@@ -1,6 +1,6 @@
 import { ReplaceIdentifierError } from './replace-identifier-error.cjs'
 
-class InvalidImportTypeReplaceIdentifierError extends ReplaceIdentifierError {
+class InvalidImportTypeError extends ReplaceIdentifierError {
 
   constructor(type) {
     super(`Invalid import type '${type}'.`)
@@ -8,4 +8,4 @@ class InvalidImportTypeReplaceIdentifierError extends ReplaceIdentifierError {
 
 }
 
-export { InvalidImportTypeReplaceIdentifierError }
+export { InvalidImportTypeError }

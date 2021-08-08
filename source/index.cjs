@@ -1,3 +1,5 @@
-const OK = true
-export default from './library/index.cjs'
-export { OK }
+const { CreatePlugin } = require('@virtualpatterns/mablung-babel-plugin/create-plugin')
+
+const { Visitor } = require('./visitor.cjs')
+
+module.exports = CreatePlugin(Visitor)

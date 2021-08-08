@@ -1,9 +1,9 @@
 import { addDefault as AddDefaultImport, addNamed as AddNamedImport, addNamespace as AddNamespaceImport, addSideEffect as AddSideEffectImport } from '@babel/helper-module-imports'
+import { Visitor as BaseVisitor } from '@virtualpatterns/mablung-babel-plugin/visitor'
 import Is from '@pwn/is'
 import * as Parser from '@babel/parser'
-import { Visitor as BaseVisitor } from '@virtualpatterns/mablung-babel-plugin/visitor'
 
-import { InvalidImportTypeReplaceIdentifierError } from './error/invalid-import-type-replace-identifier-error.cjs'
+import { InvalidImportTypeError } from './error/invalid-import-type-error.cjs'
 
 class Visitor extends BaseVisitor {
 
@@ -65,7 +65,7 @@ class Visitor extends BaseVisitor {
                 AddSideEffectImport(this._programPath, addImport.source)
                 break
               default:
-                throw new InvalidImportTypeReplaceIdentifierError(addImport.type)
+                throw new InvalidImportTypeError(addImport.type)
             }
             
           })
