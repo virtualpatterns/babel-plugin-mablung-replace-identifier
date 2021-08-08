@@ -2,7 +2,7 @@ import { createRequire as CreateRequire } from 'module'
 import Babel from '@babel/core'
 import Test from 'ava'
 
-import { InvalidImportTypeError } from '../error/invalid-import-type-error.cjs'
+import { InvalidImportTypeError } from '../library/error/invalid-import-type-error.cjs'
 
 const Require = CreateRequire(import.meta.url)
 
@@ -12,7 +12,7 @@ Test.beforeEach((test) => {
   test.context.option = { 
     'plugins': [ 
       [
-        Require.resolve('../../index.cjs'),
+        Require.resolve('../index.cjs'),
         {
           'rule': [
             {

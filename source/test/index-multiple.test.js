@@ -55,9 +55,10 @@ Test('rule.replaceWith = \'__importIdentifier_0.fileURLToPath(import.meta.url)\'
 
   let { code: actualCodeOut } = await Babel.transformAsync(codeIn, option)
   let expectedCodeOut = 'import { createRequire as _createRequire } from "module";\n' +
-                        'import _URL from "url"; \n\n' +
-                        'const FilePath = _URL.fileURLToPath(import.meta.url); \n\n' +
-                        'const Require = _createRequire(import.meta.url); '
+                        'import _URL from "url";\n' +
+                        '\n' +
+                        'const FilePath = _URL.fileURLToPath(import.meta.url);\n\n' +
+                        'const Require = _createRequire(import.meta.url);'
 
   // test.log(actualCodeOut)
   test.is(actualCodeOut, expectedCodeOut)
