@@ -16,26 +16,17 @@
   },
   "babel": {
     "presets": [
-      "@virtualpatterns/babel-preset-mablung-makefile"
-    ],
-    "env": {
-      "commonjs": {
-        "plugins": [
-          "@babel/plugin-proposal-export-default-from"
-        ],
-        "presets": [
-          [
-            "@babel/preset-env",
-            {
-              "targets": {
-                "node": "current"
-              }
-            }
-          ]
-        ]
-      },
-      "esmodule": {}
-    }
+      [
+        "@virtualpatterns/babel-preset-mablung-makefile",
+        {
+          "header": {
+            "exclude": [
+              "source/test/**/*"
+            ]
+          }
+        }
+      ]
+    ]
   },
   "c8": {
     "all": true,
@@ -49,24 +40,15 @@
   },
   "description": "TBD",
   "eslintConfig": {
-    "extends": "@virtualpatterns/eslint-config-mablung-makefile",
-    "parserOptions": {
-      "babelOptions": {
-        "parserOpts": {
-          "plugins": [
-            "exportDefaultFrom"
-          ]
-        }
-      }
-    }
+    "extends": "@virtualpatterns/eslint-config-mablung-makefile"
   },
   "exports": {
     ".": "./release/index.cjs",
     "./package.json": "./package.json"
   },
   "files": [
-    "/release/library",
-    "/release/index.cjs"
+    "release/library",
+    "release/index.cjs"
   ],
   "license": "GPL-3.0+",
   "main": "release/index.cjs",
@@ -85,8 +67,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
-    "@babel/plugin-proposal-export-default-from": "^7.14.5",
-    "@babel/preset-env": "^7.14.8",
     "@virtualpatterns/babel-preset-mablung-makefile": "0.0.1-1",
     "@virtualpatterns/eslint-config-mablung-makefile": "0.0.1-12",
     "@virtualpatterns/mablung-check-dependency": "0.0.1-63",
