@@ -1,5 +1,5 @@
 import { addDefault as AddDefaultImport, addNamed as AddNamedImport, addNamespace as AddNamespaceImport, addSideEffect as AddSideEffectImport } from '@babel/helper-module-imports'
-import { Visitor as BaseVisitor } from '@virtualpatterns/mablung-babel-plugin/visitor'
+import { Visitor as BaseVisitor } from '@virtualpatterns/babel-plugin-mablung/visitor'
 import Is from '@pwn/is'
 import * as Parser from '@babel/parser'
 

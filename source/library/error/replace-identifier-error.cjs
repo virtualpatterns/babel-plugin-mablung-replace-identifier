@@ -1,4 +1,4 @@
-import { VisitorError } from '@virtualpatterns/mablung-babel-plugin/visitor-error'
+import { VisitorError } from '@virtualpatterns/babel-plugin-mablung/visitor-error'
 
 class ReplaceIdentifierError extends VisitorError {
 

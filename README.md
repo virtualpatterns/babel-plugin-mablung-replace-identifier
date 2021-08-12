@@ -1,2 +1,2 @@
-# mablung-babel-plugin-replace-identifier
+# babel-plugin-mablung-replace-identifier
 TBD

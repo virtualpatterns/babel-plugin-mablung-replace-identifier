@@ -1,4 +1,4 @@
-const { CreatePlugin } = require('@virtualpatterns/mablung-babel-plugin/create-plugin')
+const { CreatePlugin } = require('@virtualpatterns/babel-plugin-mablung/create-plugin')
 
 const { Visitor } = require('./library/visitor.cjs')
 
