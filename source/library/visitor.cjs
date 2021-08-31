@@ -31,12 +31,12 @@ class Visitor extends BaseVisitor {
     // console.log(`Visitor.onIdentifierNode('${path.node.name}', state)`)
 
     let option = state.opts
-    let rule = option.rule
+    let rule = option.rule || []
 
     rule.forEach((rule) => {
 
-      rule.searchForPattern = rule.searchForPattern ? rule.searchForPattern : Is.regexp(rule.searchFor) ? rule.searchFor : new RegExp(rule.searchFor, 'gi')
-      rule.parserOption = rule.parserOption ? rule.parserOption : {}
+      rule.searchForPattern = rule.searchForPattern || (Is.regexp(rule.searchFor) ? rule.searchFor : new RegExp(rule.searchFor, 'gi'))
+      rule.parserOption = rule.parserOption || {}
 
       if (rule.searchForPattern.test(path.node.name)) {
 
@@ -48,7 +48,7 @@ class Visitor extends BaseVisitor {
 
         if(this._importIdentifier.length <= 0) {
 
-          rule.addImport = rule.addImport ? rule.addImport : []
+          rule.addImport = rule.addImport || []
           rule.addImport.forEach((addImport) => {
 
             switch (addImport.type) {
@@ -76,7 +76,7 @@ class Visitor extends BaseVisitor {
           // this supports non-indexed __importIdentifier, as was supported only initially
           rule.replaceWith = this._importIdentifier.length <= 0 ? rule.replaceWith : rule.replaceWith.replace(new RegExp('__importIdentifier', 'gi'), this._importIdentifier[this._importIdentifier.length - 1].name)
           
-          rule.replaceWithNode = rule.replaceWithNode ?  rule.replaceWithNode : Parser.parseExpression(rule.replaceWith, rule.parserOption)
+          rule.replaceWithNode = rule.replaceWithNode || Parser.parseExpression(rule.replaceWith, rule.parserOption)
   
           this._importIdentifier = []
 

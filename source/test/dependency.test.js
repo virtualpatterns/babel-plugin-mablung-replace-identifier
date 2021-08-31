@@ -4,7 +4,7 @@ import Test from 'ava'
 
 const Process = process
 
-Test('(default)', async (test) => {
+Test('default', async (test) => {
 
   let dependency = await Check(Process.cwd())
 

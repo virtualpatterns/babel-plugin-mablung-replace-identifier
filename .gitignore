@@ -1,4 +1,6 @@
+/archive
+/coverage
+/data
+/node_modules
+/release
 .DS_Store
-coverage/
-node_modules/
-release/
