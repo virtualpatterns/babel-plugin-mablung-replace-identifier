@@ -6,7 +6,7 @@ const Process = process
 
 Test('default', async (test) => {
 
-  let dependency = await Check(Process.cwd())
+  let dependency = await Check()
 
   // test.log(dependency)
   test.deepEqual(dependency.missing, {})
