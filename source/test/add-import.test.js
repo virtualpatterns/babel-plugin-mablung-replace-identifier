@@ -33,7 +33,7 @@ Test.beforeEach((test) => {
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ addImport: default ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ addImport: default ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].addImport.push({
     'type': 'default',
@@ -52,7 +52,7 @@ Test('plugins: [ [ index.cjs, { rule: [ addImport: default ] } ] ]', async (test
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ addImport: named ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ addImport: named ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].addImport.push({
     'type': 'named',
@@ -69,7 +69,7 @@ Test('plugins: [ [ index.cjs, { rule: [ addImport: named ] } ] ]', async (test) 
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ addImport: namespace ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ addImport: namespace ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].addImport.push({
     'type': 'namespace',
@@ -88,7 +88,7 @@ Test('plugins: [ [ index.cjs, { rule: [ addImport: namespace ] } ] ]', async (te
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ addImport: sideEffect ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ addImport: sideEffect ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].addImport.push({
     'type': 'sideEffect',
@@ -104,7 +104,7 @@ Test('plugins: [ [ index.cjs, { rule: [ addImport: sideEffect ] } ] ]', async (t
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ addImport: invalid ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ addImport: invalid ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].addImport.push({
     'type': '_sideEffect',

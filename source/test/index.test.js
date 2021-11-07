@@ -14,7 +14,7 @@ Test('plugins: [ index.cjs ]', async (test) => {
   let option = {
     'root': SourceFolderPath,
     'plugins': [
-      Require.resolve('../index.cjs')
+      Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier')
     ]
   }
 
@@ -33,7 +33,7 @@ Test('plugins: [ [ index.cjs ] ]', async (test) => {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs')
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier')
       ]
     ]
   }
@@ -46,14 +46,14 @@ Test('plugins: [ [ index.cjs ] ]', async (test) => {
 
 })
 
-Test('plugins: [ [ index.cjs, {} ] ]', async (test) => {
+Test('plugins: [ [ \'...\', {} ] ]', async (test) => {
 
   let codeIn = 'console.log(\'Hello, world!\')'
   let option = {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {}
       ]
     ]
@@ -67,14 +67,14 @@ Test('plugins: [ [ index.cjs, {} ] ]', async (test) => {
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [] } ] ]', async (test) => {
 
   let codeIn = 'console.log(\'Hello, world!\')'
   let option = {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {
           'rule': []
         }
@@ -90,14 +90,14 @@ Test('plugins: [ [ index.cjs, { rule: [] } ] ]', async (test) => {
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ searchFor: __filePath, replaceWith: __filename ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ searchFor: __filePath, replaceWith: __filename ] } ] ]', async (test) => {
 
   let codeIn = 'const FilePath = __filePath'
   let option = {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {
           'rule': [
             {
@@ -118,14 +118,14 @@ Test('plugins: [ [ index.cjs, { rule: [ searchFor: __filePath, replaceWith: __fi
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ searchFor: __filePath, replaceWith: import.meta.url, parserOption: { ... } ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ searchFor: __filePath, replaceWith: import.meta.url, parserOption: { ... } ] } ] ]', async (test) => {
 
   let codeIn = 'const FilePath = __filePath'
   let option = {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {
           'rule': [
             {
@@ -149,14 +149,14 @@ Test('plugins: [ [ index.cjs, { rule: [ searchFor: __filePath, replaceWith: impo
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ searchFor: __filePath, replaceWith: __importIdentifier ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ searchFor: __filePath, replaceWith: __importIdentifier ] } ] ]', async (test) => {
 
   let codeIn = 'const FilePath = __filePath'
   let option = {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {
           'rule': [
             {
@@ -191,14 +191,14 @@ Test('plugins: [ [ index.cjs, { rule: [ searchFor: __filePath, replaceWith: __im
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ searchFor: __require, replaceWith: __importIdentifier ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ searchFor: __require, replaceWith: __importIdentifier ] } ] ]', async (test) => {
 
   let codeIn = 'const Require = __require'
   let option = {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {
           'rule': [
             {
@@ -231,7 +231,7 @@ Test('plugins: [ [ index.cjs, { rule: [ searchFor: __require, replaceWith: __imp
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ searchFor: __filePath and __require, replaceWith: __importIdentifier ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ searchFor: __filePath and __require, replaceWith: __importIdentifier ] } ] ]', async (test) => {
 
   let codeIn =  'const FilePath = __filePath\n' +
                 'const Require = __require'
@@ -240,7 +240,7 @@ Test('plugins: [ [ index.cjs, { rule: [ searchFor: __filePath and __require, rep
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {
           'rule': [
             {

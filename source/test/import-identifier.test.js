@@ -35,7 +35,7 @@ Test.beforeEach((test) => {
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier, addImport: default ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ replaceWith: __importIdentifier, addImport: default ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier.fileURLToPath(import.meta.url)'
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -56,7 +56,7 @@ Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier, addImpo
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier_0, addImport: default ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ replaceWith: __importIdentifier_0, addImport: default ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_0.fileURLToPath(import.meta.url)'
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -77,7 +77,7 @@ Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier_0, addIm
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier, addImport: default and named ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ replaceWith: __importIdentifier, addImport: default and named ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier.fileURLToPath(import.meta.url)'
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -104,7 +104,7 @@ Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier, addImpo
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier_0, addImport: default and named ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ replaceWith: __importIdentifier_0, addImport: default and named ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_0.fileURLToPath(import.meta.url)'
   test.context.option.plugins[0][1].rule[0].addImport.push({
@@ -131,7 +131,7 @@ Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier_0, addIm
 
 })
 
-Test('plugins: [ [ index.cjs, { rule: [ replaceWith: __importIdentifier_1, addImport: default and named ] } ] ]', async (test) => {
+Test('plugins: [ [ \'...\', { rule: [ replaceWith: __importIdentifier_1, addImport: default and named ] } ] ]', async (test) => {
 
   test.context.option.plugins[0][1].rule[0].replaceWith = '__importIdentifier_1.fileURLToPath(import.meta.url)'
   test.context.option.plugins[0][1].rule[0].addImport.push({
