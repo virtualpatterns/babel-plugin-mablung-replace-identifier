@@ -5,6 +5,7 @@ import Test from 'ava'
 import URL from 'url'
 
 const Require = CreateRequire(import.meta.url)
+
 const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('release/', 'source/')
 const SourceFolderPath = Path.dirname(SourceFilePath).replace('release/', 'source/')
 
@@ -15,7 +16,7 @@ Test.beforeEach((test) => {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {
           'rule': [
             {

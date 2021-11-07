@@ -17,7 +17,7 @@ Test.beforeEach((test) => {
     'root': SourceFolderPath,
     'plugins': [
       [
-        Require.resolve('../index.cjs'),
+        Require.resolve('@virtualpatterns/babel-plugin-mablung-replace-identifier'),
         {
           'rule': [
             {
