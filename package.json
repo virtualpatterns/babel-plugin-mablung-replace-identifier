@@ -10,7 +10,7 @@
     "release/plugin.cjs"
   ],
   "license": "GPL-3.0+",
-  "main": "release/index.cjs",
+  "main": "release/plugin.cjs",
   "name": "@virtualpatterns/babel-plugin-mablung-replace-identifier",
   "repository": {
     "type": "git",
