@@ -5,10 +5,10 @@ import Test from 'ava'
 import URL from 'url'
 
 const Require = CreateRequire(import.meta.url)
-const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('release/', 'source/')
-const SourceFolderPath = Path.dirname(SourceFilePath).replace('release/', 'source/')
+const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('/release/', '/source/')
+const SourceFolderPath = Path.dirname(SourceFilePath)
 
-Test('plugins: [ index.cjs ]', async (test) => {
+Test('plugins: [ \'...\' ]', async (test) => {
 
   let codeIn = 'console.log(\'Hello, world!\')'
   let option = {
@@ -26,7 +26,7 @@ Test('plugins: [ index.cjs ]', async (test) => {
 
 })
 
-Test('plugins: [ [ index.cjs ] ]', async (test) => {
+Test('plugins: [ [ \'...\' ] ]', async (test) => {
 
   let codeIn = 'console.log(\'Hello, world!\')'
   let option = {

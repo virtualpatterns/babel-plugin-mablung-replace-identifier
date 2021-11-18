@@ -7,8 +7,8 @@ import URL from 'url'
 import { InvalidImportTypeError } from '../library/error/invalid-import-type-error.cjs'
 
 const Require = CreateRequire(import.meta.url)
-const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('release/', 'source/')
-const SourceFolderPath = Path.dirname(SourceFilePath).replace('release/', 'source/')
+const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('/release/', '/source/')
+const SourceFolderPath = Path.dirname(SourceFilePath)
 
 Test.beforeEach((test) => {
 
