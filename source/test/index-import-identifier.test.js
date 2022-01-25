@@ -5,7 +5,6 @@ import Test from 'ava'
 import URL from 'url'
 
 const Require = CreateRequire(import.meta.url)
-
 const SourceFilePath = URL.fileURLToPath(import.meta.url).replace('/release/', '/source/')
 const SourceFolderPath = Path.dirname(SourceFilePath)
 
