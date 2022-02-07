@@ -22,14 +22,14 @@
     "@babel/helper-module-imports": "^7.16.7",
     "@babel/parser": "^7.17.0",
     "@pwn/is": "^1.0.2",
-    "@virtualpatterns/babel-plugin-mablung": "0.0.26-52"
+    "@virtualpatterns/babel-plugin-mablung": "0.0.26-54"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
-    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-85",
-    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-82",
-    "@virtualpatterns/mablung-check-dependency": "0.0.26-60",
-    "@virtualpatterns/mablung-makefile": "0.0.26-188",
+    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-87",
+    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-84",
+    "@virtualpatterns/mablung-check-dependency": "0.0.26-62",
+    "@virtualpatterns/mablung-makefile": "0.0.26-215",
     "ava": "^4.0.1"
   }
 }
