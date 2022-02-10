@@ -28,7 +28,7 @@
     "@babel/core": "^7.17.2",
     "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-105",
     "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-100",
-    "@virtualpatterns/mablung-check-dependency": "0.0.26-74",
+    "@virtualpatterns/mablung-check-dependency": "0.0.26-78",
     "@virtualpatterns/mablung-makefile": "0.0.26-228",
     "ava": "^4.0.1"
   }
