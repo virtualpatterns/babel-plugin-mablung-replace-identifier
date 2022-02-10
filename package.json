@@ -17,7 +17,7 @@
     "url": "https://github.com/virtualpatterns/babel-plugin-mablung-replace-identifier"
   },
   "type": "module",
-  "version": "0.0.26-50",
+  "version": "0.0.26-51",
   "dependencies": {
     "@babel/helper-module-imports": "^7.16.7",
     "@babel/parser": "^7.17.0",
