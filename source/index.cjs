@@ -1,5 +1,5 @@
-const { CreatePlugin } = require('@virtualpatterns/babel-plugin-mablung')
+import { CreatePlugin } from '@virtualpatterns/babel-plugin-mablung'
 
-const { Visitor } = require('./library/visitor.cjs')
+import { Visitor } from './library/visitor.cjs'
 
 module.exports = CreatePlugin(Visitor)
